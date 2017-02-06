@@ -1,5 +1,5 @@
 /**
- * solving summing numbers with in different ways
+ * Solve summing numbers
  * Created by Cassandra Largosa on 2/5/2017.
  */
 
@@ -17,26 +17,27 @@ console.log(`for: ${sumFor(testList)}`);
 
 function sumWhile(nums) {
   let sum = 0;
-  let i = 0;
+  let i =  0;
   while (i < nums.length) {
     sum += nums[i];
+    i++;
   }
   return sum;
 }
 
 console.log(`while: ${sumWhile(testList)}`);
 
-function sumRecursive(nums) {
+function sumRecursion(nums) {
   if (nums.length === 0) {
     return 0;
   }
-  return nums.shift() + sumRecursive(nums);
+  return nums[0] + sumRecursion(nums.slice(1,nums.length));
 }
 
-console.log(`recursive: ${sumRecursive(testList)}`);
+console.log(`recursion: ${sumRecursion(testList)}`);
 
-function sumTheSimpleWay(nums) {
-  return _.redeuce(nums, function(mem, num) { return mem + num });
+function sumTheSimpleWay(nums) { // aka underscore
+  return _.reduce(nums, function(mem, num){return mem + num;});
 }
 
-console.log(`underescore ${sumTheSimpleWay(testList)}`);
+console.log(`underscore: ${sumTheSimpleWay(testList)}`);
